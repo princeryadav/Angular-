@@ -24,7 +24,7 @@ function List() {
      * Add the value to the end of list
      */
 
-    this.pushBack = function (value) {
+    function pushBack(value) {
         //create a new node
         var newNode = new Node(value);
 
@@ -37,14 +37,14 @@ function List() {
         }
     }
 
-    //  List.prototype.pushBack=pushBack
+    List.prototype.pushBack=pushBack;
 
     /**
      * PushFront
      * Add a value to the fornt(Begining) of the list 
      */
 
-    this.pushFront = function (value) {
+    function pushFront(value) {
         //create new Node 
         var newNode = new Node(value);
 
@@ -64,16 +64,46 @@ function List() {
         }
     }
 
+    List.prototype.pushFront=pushFront;
+
+    /**
+     * Delete node from linked list 
+     */
+    function remove(value) {
+        //hmm...value can be anywhere 1.at head 2.at tail 
+        //3. ONLY node 4. somewhere in between.
+        for (var current = this.head; current; current = current.next) {
+            //see if we can found it?
+            if(value==current.value)
+            {
+                //1.At head 
+                if(current==this.head)
+                {
+                    this.head=this.head.next;
+                    current=null;
+                }
+
+                //2.At tail
+                if(current==this.tail)
+                {
+                    
+                }
+            }
+        }
+
+    }
+
+
     /**
      * print linked list
      */
-    this.printForword = function () {
+    function printForword() {
         for (var current = this.head; current; current = current.next) {
             console.log(current.value);
         }
     }
 
-    //List.prototype.printForword=printForword
+    List.prototype.printForword=printForword;
 }
 //create a list object
 var list = new List();
